@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="generator" content="gvim" />
+<meta name="author" content="闲耘™ (hotoo.cn[AT]gmail.com)" />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="vimmer.css" media="all" />
+<title>Vimmer - Vim 爱好者</title>
+</head>
+<body>
+    <header>
+        <input type="search" name="key" value="" />
+    </header>
+    <section>
+        <div id="vimmer-list"></div>
+    </section>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript">/*<![CDATA[*/
+        $(function(){
+            $.getJSON("vimmer.json", function(data){
+                var s=['<ul>'];
+                data = data.sort(function(){
+                    return Math.random()>=0.5?1:-1;
+                });
+                for(var i=0,l=data.length,e=data[i]; i<l; i++,e=data[i]){
+                    s[s.length] = ['<li>'];
+                    s[s.length] = '<div class="gravatar"><img src="http://www.gravatar.com/avatar/'+(e.gravatar_id||"")+'" /></div>';
+                    s = s.concat(['<div>',(e.name||e.nickname||e.id),'(',e.id,')','</div>'])
+                    if(e.mail)
+                    s = s.concat(['<div><a href="mailto:',e.mail.replace('[AT]','@'),'">',e.mail.replace('[AT]','@'),'</a></div>']);
+                    if(e.blog){
+                        s[s.length] = '<div><a href="'+e.blog+'">'+e.blog+'</a></div>'
+                    }
+                    if(e.qq){
+                        s[s.length] = '<div>QQ: '+e.qq+'</div>'
+                    }
+                    s = s.concat(['<i>',i+1,'</i>'])
+                    s[s.length] = ['</li>'];
+                }
+                s = s.concat('</ul>');
+                $("#vimmer-list").append(s.join(""));
+
+                var pane = $('<div id="hover-pane"></div>').appendTo(document.body);
+                $("#vimmer-list>ul>li").mouseover(function(){
+                    var offset=$(this).offset();
+                    pane.html($(this).html()).css({left:offset.left*1,top:offset.top*1});//.show();
+                    pane.show();
+                });
+                pane.mouseleave(function(){
+                    pane.hide();
+                });
+            });
+
+        });
+    /*]]>*/</script>
+</body>
+</html>

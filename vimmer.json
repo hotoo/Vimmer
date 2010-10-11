@@ -1,6 +1,6 @@
 [
 {"id":"hotoo","nickname":"闲耘™","twitter":"hotoo","mail":"hotoo.cn[AT]gmail.com","blog":"http://hotoo.github.com/","github":"hotoo","flickr":"hotoo","delicious":"hotoo","douban":"hotoo","gravatar_id":"2fdef0a77e4bf207e3ec30660e7896e8","memo":"2009年4月开始使用 Vim"},
-{"id":"c9s","name":"林佑安","twitter":"c9s","mail":"cornelius.howl[AT]gmail.com","blog":"http://c9s.me/","github":"c9s","gravatar_id":"7490b4e3e9cb85a1f7dc0c8ea01a86e5"},
+{"id":"c9s","name":"林佑安","twitter":"c9s","mail":"cornelius.howl[AT]gmail.com","blog":"http://c9s.me/","github":"c9s","gravatar_id":"7490b4e3e9cb85a1f7dc0c8ea01a86e5","location":"台湾(Taiwan)"},
 {"id":"lilydjwg","name":"依云(百合仙子)","twitter":"lilydjwg","blog":"http://lilydjwg.is-programmer.com/","gravatar_id":"3e3c1cb94b9ad3551cd9d43f2e52e105"},
 {"id":"davdix","name":"Davdi Xie","blog":"http://davidx.me/","mail":"mykingheaven[AT]gmail.com","twitter":"davidx_me","douban":"kingheaven","gravatar_id":"1d3ec63379dcd7baf082dbc975d4b327"},
 {"id":"tiger.lee","name":"刻薄狐狸","mail":"i.m.tiger.lee[AT]gmail.com","blog":"http://tigerlee.me/","location":"杭州","gravatar_id":"becc8415061f5b05e192285a77c7d16c"},
@@ -24,5 +24,6 @@
 {"id":"s5unty","nickname":"vern","twitter":"s5unty","mail":"s5unty[AT]gmail.com","blog":"http://du1abadd.org/","github":"s5unty","gravatar_id":"0d4491713b897dbe9f10ab6b051f61ae"},
 {"id":"harryxu","nickname":"harryxu","mail":"harryzhxu[AT]gmail.com","blog":"http://blog.harrspy.com/","twitter":"harryxu","flickr":"harry_zhxu","delicious":"harryxu","github":"harryxu","douban":"harryxu","gravatar_id":"c2308942f3aebb726ba076cba9aaa58f","location":"上海"},
 {"id":"Leeiio","nickname":"Leeiio","mail":"guaniu[AT]gmail.com","blog":"http://leeiio.me/","twitter":"leeiio","flickr":"leeiio","delicious":"leeiio","github":"leeiio","douban":"guaniu","about.me":"leeiio","gravatar_id":"47c06e1eb1331b813bc9f0cb7d77ed08","location":"杭州(Hangzhou)","memo":"Doit.im 前端开发"},
-{"id":"gadmyth","nickname":"gadmyth","mail":"gadmyth[AT]gmail.com","github":"gadmyth"}
+{"id":"gadmyth","nickname":"gadmyth","mail":"gadmyth[AT]gmail.com","github":"gadmyth"},
+{"id":"Zac","nickname":"Zac","mail":"zac.x.lee[AT]gmail.com","gravatar_id":"f3dfdd8087b926c7920fb2eef47dd924","location":"深圳","memo":"08年开始使用VIM"}
 ]

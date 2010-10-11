@@ -1,5 +1,5 @@
 [
-{"id":"hotoo","nickname":"闲耘™","twitter":"hotoo","mail":"hotoo.cn[AT]gmail.com","blog":"http://hotoo.github.com/blog/","gravatar_id":"2fdef0a77e4bf207e3ec30660e7896e8"},
+{"id":"hotoo","nickname":"闲耘™","twitter":"hotoo","mail":"hotoo.cn[AT]gmail.com","blog":"http://hotoo.github.com/","github":"hotoo","flickr":"hotoo","delicious":"hotoo","douban":"hotoo","gravatar_id":"2fdef0a77e4bf207e3ec30660e7896e8","memo":"2009年4月开始使用 Vim"},
 {"id":"c9s","name":"林佑安","twitter":"c9s","mail":"cornelius.howl[AT]gmail.com","blog":"http://c9s.me/","gravatar_id":"7490b4e3e9cb85a1f7dc0c8ea01a86e5"},
 {"id":"lilydjwg","name":"依云(百合仙子)","twitter":"lilydjwg","blog":"http://lilydjwg.is-programmer.com/","gravatar_id":"3e3c1cb94b9ad3551cd9d43f2e52e105"},
 {"id":"davdix","name":"Davdi Xie","blog":"http://davidx.me/","mail":"mykingheaven[AT]gmail.com","gravatar_id":"1d3ec63379dcd7baf082dbc975d4b327"},
@@ -10,5 +10,9 @@
 {"id":"Nobody","mail":"zhangweiwei945@gmail.com","qq":"939244518","gravatar_id":"f0e2b4a1fb2637a5ed6248dd560aa4a0"},
 {"id":"redspid","mail":"redspid@gmail.com","gravatar_id":"c5e87bf1925ccebd3cbc5376f522298f"},
 {"id":"shrek.wang","mail":"shrek.wang@gmail.com","gravatar_id":"b6256a2588ffd0ebb0c34cb625e548a6"},
-{"id":"SKY","mail":"sdhzjc@gmail.com","qq":"11199966","gravatar_id":"96cb2f9d5736df36f45941c2b8a4bf9a"}
+{"id":"SKY","mail":"sdhzjc@gmail.com","qq":"11199966","gravatar_id":"96cb2f9d5736df36f45941c2b8a4bf9a"},
+{"id":"Auciou Yang","google_profile":"http://www.google.com/profiles/gowiden"},
+{"id":"gzlinyi","mail":"gzlinyi@gmail.com","blog":"http://www.gzlinyi.cn/","gravatar_id":"18e11d7b912daa9e92fbfdfea0bfdb6e"},
+{"id":"黄如华","mail":"cnhruhua@gmail.com","blog":"http://uxcode.info","twitter":"cnruhua","github":"cnruhua","douban":"cnruhua","location":"杭州(Hangzhou)"},
+{"id":"Auston_Jary","mail":"anyeccc@gmail.com","blog":"http://aoy.me","twitter":"Auston_Jary","delicious":"Auston_Jary","github":"Auston","douban":"Auston_Jary"}
 ]

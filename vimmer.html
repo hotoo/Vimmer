@@ -29,28 +29,51 @@
                 for(var i=0,l=data.length,e=data[i]; i<l; i++,e=data[i]){
                     s[s.length] = ['<li>'];
                     s[s.length] = '<div class="gravatar"><img src="http://www.gravatar.com/avatar/'+(e.gravatar_id||"")+'" /></div>';
-                    s = s.concat(['<div>',(e.name||e.nickname||e.id),'(',e.id,')','</div>'])
+                    s = s.concat(['<div>',(e.name||e.nickname||e.id),'(',e.id,')','</div>']);
                     if(e.mail)
-                    s = s.concat(['<div><a href="mailto:',e.mail.replace('[AT]','@'),'">',e.mail.replace('[AT]','@'),'</a></div>']);
+                        s = s.concat(['<div class="mail"><a href="mailto:',e.mail.replace('[AT]','@'),'">',e.mail.replace('[AT]','@'),'</a></div>']);
                     if(e.blog){
-                        s[s.length] = '<div><a href="'+e.blog+'">'+e.blog+'</a></div>'
+                        s[s.length] = '<div class="blog"><a href="'+e.blog+'">'+e.blog+'</a></div>';
+                    }
+                    if(e.twitter){
+                        s[s.length] = '<div class="twitter"><a href="https://twitter.com/'+e.twitter+'">@'+e.twitter+'</a></div>';
+                    }
+                    if(e.github){
+                        s[s.length] = '<div class="github"><a href="http://github.com/'+e.github+'">'+e.github+'@github</a></div>';
+                    }
+                    if(e.flickr){
+                        s[s.length] = '<div class="flickr"><a href="http://www.flickr.com/photos/'+e.flickr+'/">'+e.flickr+'@flickr</a></div>';
+                    }
+                    if(e.delicious){
+                        s[s.length] = '<div class="delicious"><a href="http://www.delicious.com/'+e.delicious+'">'+e.delicious+'@delicious</a></div>';
+                    }
+                    if(e.douban){
+                        s[s.length] = '<div class="douban"><a href="http://www.douban.com/people/'+e.douban+'/">'+e.douban+'@douban</a></div>';
                     }
                     if(e.qq){
-                        s[s.length] = '<div>QQ: '+e.qq+'</div>'
+                        s[s.length] = '<div class="qq">'+e.qq+'</div>';
                     }
-                    s = s.concat(['<i>',i+1,'</i>'])
+                    if(e.memo){
+                        s[s.length] = '<div class="memo">'+e.memo+'</div>';
+                    }
+                    s = s.concat(['<i>',i+1,'</i>']);
                     s[s.length] = ['</li>'];
                 }
                 s = s.concat('</ul>');
                 $("#vimmer-list").append(s.join(""));
 
                 var pane = $('<div id="hover-pane"></div>').appendTo(document.body);
+                //var target = null;
                 $("#vimmer-list>ul>li").mouseover(function(){
                     var offset=$(this).offset();
-                    pane.html($(this).html()).css({left:offset.left*1,top:offset.top*1});//.show();
-                    pane.show();
+                    pane.html($(this).html()).css({left:offset.left,top:offset.top}).show();
+                    //$(this).css({"visibility":"hidden"});
+                    //target = $(this);
                 });
                 pane.mouseleave(function(){
+                    //if(target){
+                    //    target.css({"visibility":"visible"});
+                    //}
                     pane.hide();
                 });
             });

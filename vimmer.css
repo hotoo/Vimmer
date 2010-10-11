@@ -29,23 +29,34 @@ li:hover i{color:#ccc;}
 a{color:#333;}
 li:hover a{color:#fff;}
 
-#hover-pane{position:absolute; top:0; left:0; display:none;
+#hover-pane{
+    position:absolute; top:0; left:0; display:none;
     width:180px;
     height:auto;
-    overflow:visible;
+    overflow:hidden;
     padding:5px;
-    background:#333 none;
+    background:#000 none;
     border:1px solid #666;
     color:#fff;
     /*zoom:1.5;*/
-    /*-moz-border-radius:8px; -khtml-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;*/
     /*-webkit-transform:scale(1.5);*/
     /*-moz-transform:scale(1.5);*/
     /*-o-transform:scale(1.5);*/
     -moz-border-radius:4px; -khtml-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;
     z-index:100;
+    -moz-opacity:.85; opacity:.85;/* -ms-filter:"alpha(opacity=85)"; filter:alpha(opacity=85); zoom:1;*/
 }
-#hover-pane div{padding:3px 0;}
+#hover-pane div{padding:3px 0; white-space:nowrap;}
 #hover-pane div.gravatar{background:#fff none; padding:2px;}
 #hover-pane a{color:#fff;}
 #hover-pane i{position:absolute; top:5px; right:10px; color:#ccc; font-size:2em;}
+
+div a{padding-left:20px; background:transparent none no-repeat 0 center;}
+div.mail a{background-image:url(icons/gmail.gif);}
+div.github a{background-image:url(icons/github.png);}
+div.twitter a{background-image:url(icons/twitter.png);}
+div.flickr a{background-image:url(icons/flickr.png);}
+div.delicious a{background-image:url(icons/delicious.png);}
+div.douban a{background-image:url(icons/douban.png);}
+div.qq{background:transparent url(icons/qq.png) no-repeat 0 center; padding-left:20px!important;}
+div.memo{margin-top:10px;border-top:1px solid #666; padding-top:10px; line-height:1.5em;}

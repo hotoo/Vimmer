@@ -1,4 +1,12 @@
 html,body{margin:0; padding:0; font:1em/1 Helvetica,Tahoma,Arial,\5b8b\4f53,sans-serif;}
+#wrapper{width:90%; margin:0 auto;}
+header{
+    text-align:center; display:block; width:100%;
+}
+#key{
+    font-size:2em; padding:3px 5px; border:1px solid #ccc; margin:8px auto;
+    -moz-border-radius:4px; -khtml-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;
+}
 ul{list-style-type:none; margin:0; padding:0;}
 li{
     list-style-type:none;
@@ -51,7 +59,10 @@ li:hover a{color:#fff;}
 #hover-pane a{color:#fff;}
 #hover-pane i{position:absolute; top:5px; right:10px; color:#ccc; font-size:2em;}
 
-div a{padding-left:20px; background:transparent none no-repeat 0 center;}
+div a{padding-left:20px; background:transparent none no-repeat 0 center; text-decoration:none; color:#999!important; line-height:1.2em;}
+div a cite{color:#999!important; font-style:normal;}
+div a:hover{color:#fff!important;/* text-decoration:underline;*/}
+div a:hover cite{color:#f60!important;}
 div.mail a{background-image:url(icons/gmail.gif);}
 div.github a{background-image:url(icons/github.png);}
 div.twitter a{background-image:url(icons/twitter.png);}

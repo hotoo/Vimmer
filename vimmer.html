@@ -60,7 +60,7 @@
                     if(e.memo){
                         s[s.length] = '<div class="memo">'+e.memo+'</div>';
                     }
-                    s = s.concat(['<i>',i+1,'</i>']);
+                    s[s.length] = '<i>'+(i+1)+'</i>';
                     s[s.length] = ['</li>'];
                 }
                 s = s.concat('</ul>');

@@ -4,7 +4,7 @@
 {"id":"lilydjwg","name":"依云(百合仙子)","twitter":"lilydjwg","blog":"http://lilydjwg.is-programmer.com/","gravatar_id":"3e3c1cb94b9ad3551cd9d43f2e52e105"},
 {"id":"davdix","name":"Davdi Xie","blog":"http://davidx.me/","mail":"mykingheaven[AT]gmail.com","twitter":"davidx_me","douban":"kingheaven","gravatar_id":"1d3ec63379dcd7baf082dbc975d4b327"},
 {"id":"tiger.lee","name":"刻薄狐狸","mail":"i.m.tiger.lee[AT]gmail.com","blog":"http://tigerlee.me/","location":"杭州","gravatar_id":"becc8415061f5b05e192285a77c7d16c"},
-{"id":"","name":"刘春棍","mail":"bsdwiki[AT]gmail.com","blog":"http://liuchungun.appspot.com/","gravatar_id":"5b423b9e5a3a8351a7fb0de8b70c1354"},
+{"id":"","name":"刘春棍","mail":"bsdwiki[AT]gmail.com","blog":"http://liuchungun.appspot.com/","twitter":"bsdwiki","gravatar_id":"5b423b9e5a3a8351a7fb0de8b70c1354"},
 {"id":"九天","name":"张九天","mail":"zhang9tian[AT]gmail.com","gravatar_id":"8b71cd4bb3212873bf8a82c766ec53a8"},
 {"id":"biazil","mail":"biazil.x[AT]gmail.com","gravatar_id":"9d62274c53b810462514643576a0dac7"},
 {"id":"Nobody","mail":"zhangweiwei945[AT]gmail.com","qq":"939244518","gravatar_id":"f0e2b4a1fb2637a5ed6248dd560aa4a0"},
@@ -25,5 +25,8 @@
 {"id":"harryxu","nickname":"harryxu","mail":"harryzhxu[AT]gmail.com","blog":"http://blog.harrspy.com/","twitter":"harryxu","flickr":"harry_zhxu","delicious":"harryxu","github":"harryxu","douban":"harryxu","gravatar_id":"c2308942f3aebb726ba076cba9aaa58f","location":"上海"},
 {"id":"Leeiio","nickname":"Leeiio","mail":"guaniu[AT]gmail.com","blog":"http://leeiio.me/","twitter":"leeiio","flickr":"leeiio","delicious":"leeiio","github":"leeiio","douban":"guaniu","about.me":"leeiio","gravatar_id":"47c06e1eb1331b813bc9f0cb7d77ed08","location":"杭州(Hangzhou)","memo":"Doit.im 前端开发"},
 {"id":"gadmyth","nickname":"gadmyth","mail":"gadmyth[AT]gmail.com","github":"gadmyth"},
-{"id":"Zac","nickname":"Zac","mail":"zac.x.lee[AT]gmail.com","gravatar_id":"f3dfdd8087b926c7920fb2eef47dd924","location":"深圳","memo":"08年开始使用VIM"}
+{"id":"Zac","nickname":"Zac","mail":"zac.x.lee[AT]gmail.com","gravatar_id":"f3dfdd8087b926c7920fb2eef47dd924","location":"深圳","memo":"08年开始使用VIM"},
+{"id":"xell","nickname":"xell","mail":"xell[AT]gmail.com","blog":"http://xell.blogbus.com/","twitter":"xell","flickr":"xellliu","github":"xell","douban":"xell","gravatar_id":"dd75e5359908ae133e9e2f1a44692935","location":"Wuhan"},
+{"id":"othree","mail":"othree[AT]gmail.com","blog":"http://blog.othree.net/","twitter":"othree","flickr":"othree","delicious":"othree","github":"othree","gravatar_id":"c4ce16f549c450f4759eb37f5d5d1a63"},
+{"id":"reedboat","mail":"zhqm03[AT]gmail.com","qq":"275435433","blog":"http://weiye.info/blog","gravatar_id":"0d4949c1d2493e7403f6f3b4e5ad49ff"}
 ]

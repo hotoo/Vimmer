@@ -3,11 +3,14 @@ html,body{margin:0; padding:0; font:1em/1 Helvetica,Tahoma,Arial,\5b8b\4f53,sans
 header{
     text-align:center; display:block; width:100%;
 }
+section{margin-bottom:300px; display:block;}
 #key{
     font-size:2em; padding:3px 5px; border:1px solid #ccc; margin:8px auto;
     -moz-border-radius:4px; -khtml-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;
 }
 ul{list-style-type:none; margin:0; padding:0;}
+ul:after{content:"\0020"; display:block; height:0; clear:both;}
+ul{zoom:1;}
 li{
     list-style-type:none;
     margin:8px;
@@ -64,10 +67,11 @@ div a cite{color:#999!important; font-style:normal;}
 div a:hover{color:#fff!important;/* text-decoration:underline;*/}
 div a:hover cite{color:#f60!important;}
 div.mail a{background-image:url(icons/gmail.gif);}
-div.github a{background-image:url(icons/github.png);}
 div.twitter a{background-image:url(icons/twitter.png);}
+div.yahoo_meme a{background-image:url(icons/yahoo-meme.gif);}
+div.github a{background-image:url(icons/github.png);}
 div.flickr a{background-image:url(icons/flickr.png);}
 div.delicious a{background-image:url(icons/delicious.png);}
 div.douban a{background-image:url(icons/douban.png);}
 div.qq{background:transparent url(icons/qq.png) no-repeat 0 center; padding-left:20px!important;}
-div.memo{margin-top:10px;border-top:1px solid #666; padding-top:10px; line-height:1.5em;}
+div.memo{margin-top:10px;border-top:1px solid #666; padding-top:10px; line-height:1.5em; font-size:.85em; color:#999;}

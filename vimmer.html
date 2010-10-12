@@ -37,7 +37,7 @@
                         s[s.length] = '<div class="mail"><a href="mailto:'+e.mail+'"><cite>'+m[0]+'</cite>@'+m[1]+'</a></div>';
                     }
                     if(e.blog){
-                        s[s.length] = '<div class="blog"><a href="'+e.blog+'"><cite>'+e.blog+'</cite></a></div>';
+                        s[s.length] = '<div class="blog"><a href="'+e.blog+'"><cite>'+e.blog.replace(/^https?:\/\/(?:www\.)?(.*?)\/?$/i,"$1")+'</cite></a></div>';
                     }
                     if(e.twitter){
                         s[s.length] = '<div class="twitter"><a href="https://twitter.com/'+e.twitter+'">@<cite>'+e.twitter+'</cite></a></div>';

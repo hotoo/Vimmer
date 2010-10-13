@@ -20,6 +20,13 @@
 <div id="wrapper">
     <header>
         <input type="search" name="key" id="key" value="" />
+        <div>
+            <ul style="position: absolute; right: 5px; top:5px;" class="switch-bar">
+                <li class="label"><label>Sort:</label></li>
+                <li class="first active"><a href="javascript:void(0);">Random</a></li>
+                <li class="last"><a href="javascript:void(0);">Alphabetical</a></li>
+            </ul>
+        </div>
     </header>
     <section>
         <div id="vimmer-list">Loading...</div>
@@ -38,9 +45,17 @@
                     s[s.length] = '<div class="gravatar"><img src="http://www.gravatar.com/avatar/'+(e.gravatar_id||"")+'?s=80" width="80" height="80" /></div>';
                     s[s.length] = '<div>'+(e.name||e.nickname||e.id)+'('+e.id+')'+'</div>';
                     if(e.mail){
-                        e.mail = e.mail.replace("[AT]","@");
-                        var m=e.mail.split("@");
-                        s[s.length] = '<div class="mail"><a href="mailto:'+e.mail+'"><cite>'+m[0]+'</cite>@'+m[1]+'</a></div>';
+                        if(typeof e.mail=="string" || e.mail instanceof String){
+                            e.mail = e.mail.replace("[AT]","@");
+                            var m=e.mail.split("@");
+                            s[s.length] = '<div class="mail"><a href="mailto:'+e.mail+'"><cite>'+m[0]+'</cite>@'+m[1]+'</a></div>';
+                        }else if(e.mail instanceof Array){
+                            for(var j=0,k=e.mail.length; j<k; j++){
+                                e.mail[j] = e.mail[j].replace("[AT]","@");
+                                var m=e.mail[j].split("@");
+                                s[s.length] = '<div class="mail"><a href="mailto:'+e.mail[j]+'"><cite>'+m[0]+'</cite>@'+m[1]+'</a></div>';
+                            }
+                        }
                     }
                     if(e.blog){
                         if(typeof e.blog=="string" || e.blog instanceof String){

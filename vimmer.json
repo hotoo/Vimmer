@@ -1,19 +1,19 @@
 [
 {"id":"hotoo","nickname":"闲耘™","twitter":"hotoo","mail":"hotoo.cn[AT]gmail.com","blog":"http://hotoo.github.com/","github":"hotoo","flickr":"hotoo","delicious":"hotoo","douban":"hotoo","google_profile":"hotoo.cn","google_code":"hotoo","gravatar_id":"2fdef0a77e4bf207e3ec30660e7896e8","memo":"2009年4月开始使用 Vim"},
 {"id":"c9s","name":"林佑安","twitter":"c9s","mail":"cornelius.howl[AT]gmail.com","blog":"http://c9s.me/","github":"c9s","gravatar_id":"7490b4e3e9cb85a1f7dc0c8ea01a86e5","location":"台湾(Taiwan)"},
-{"id":"lilydjwg","name":"依云(百合仙子)","twitter":"lilydjwg","blog":"http://lilydjwg.is-programmer.com/","gravatar_id":"3e3c1cb94b9ad3551cd9d43f2e52e105"},
+{"id":"lilydjwg","name":"依云(百合仙子)","mail":"lilydjwg[AT]gmail.com","twitter":"lilydjwg","blog":"http://lilydjwg.is-programmer.com/","gravatar_id":"3e3c1cb94b9ad3551cd9d43f2e52e105"},
 {"id":"davdix","name":"Davdi Xie","blog":"http://davidx.me/","mail":"mykingheaven[AT]gmail.com","twitter":"davidx_me","douban":"kingheaven","gravatar_id":"1d3ec63379dcd7baf082dbc975d4b327"},
 {"id":"tiger.lee","name":"刻薄狐狸","mail":"i.m.tiger.lee[AT]gmail.com","blog":"http://tigerlee.me/","twitter":"tiger_lee","location":"杭州","gravatar_id":"becc8415061f5b05e192285a77c7d16c"},
 {"id":"","name":"刘春棍","mail":"bsdwiki[AT]gmail.com","blog":"http://liuchungun.appspot.com/","twitter":"bsdwiki","gravatar_id":"5b423b9e5a3a8351a7fb0de8b70c1354"},
 {"id":"九天","name":"张九天","mail":"zhang9tian[AT]gmail.com","gravatar_id":"8b71cd4bb3212873bf8a82c766ec53a8"},
-{"id":"biazil","mail":"biazil.x[AT]gmail.com","gravatar_id":"9d62274c53b810462514643576a0dac7"},
+{"id":"lizaib","mail":["biazil.x[AT]gmail.com","lizaib[AT]gmail.com"],"google_profile":"biazil.x","qq":"363270151","gravatar_id":"9d62274c53b810462514643576a0dac7"},
 {"id":"Nobody","mail":"zhangweiwei945[AT]gmail.com","qq":"939244518","gravatar_id":"f0e2b4a1fb2637a5ed6248dd560aa4a0"},
 {"id":"redspid","mail":"redspid[AT]gmail.com","gravatar_id":"c5e87bf1925ccebd3cbc5376f522298f"},
 {"id":"shrek.wang","mail":"shrek.wang[AT]gmail.com","gravatar_id":"b6256a2588ffd0ebb0c34cb625e548a6"},
 {"id":"SKY","mail":"sdhzjc[AT]gmail.com","qq":"11199966","gravatar_id":"96cb2f9d5736df36f45941c2b8a4bf9a"},
 {"id":"Auciou Yang","google_profile":"gowiden"},
 {"id":"gzlinyi","mail":"gzlinyi[AT]gmail.com","blog":"http://www.gzlinyi.cn/","gravatar_id":"18e11d7b912daa9e92fbfdfea0bfdb6e"},
-{"id":"黄如华","mail":"cnhruhua[AT]gmail.com","blog":"http://uxcode.info","twitter":"cnruhua","github":"cnruhua","douban":"cnruhua","location":"杭州(Hangzhou)","gravatar_id":"2cd4f384e14c7fc0e4411f5a7d46510b"},
+{"id":"cnhruhua","name":"黄如华","mail":"cnhruhua[AT]gmail.com","blog":"http://uxcode.info","twitter":"cnruhua","github":"cnruhua","douban":"cnruhua","location":"杭州(Hangzhou)","gravatar_id":"2cd4f384e14c7fc0e4411f5a7d46510b"},
 {"id":"Auston_Jary","nickname":"炫日","mail":"anyeccc[AT]gmail.com","blog":"http://aoy.me","twitter":"Auston_Jary","delicious":"Auston_Jary","github":"Auston","douban":"Auston_Jary","gravatar_id":"7f93d8019ee0ad0c4e2b1a8485bb0a87"},
 {"id":"laoyang945","nickname":"老杨","mail":"laoyang945[AT]gmail.com","blog":"http://laoyang.info/","twitter":"laoyang945","gravatar_id":"241f416bcc4236e4b2af26be9925dddf","location":"新加坡"},
 {"id":"sofish","mail":"sofish[AT]163.com","blog":"http://happinesz.cn/","twitter":"sofish","flickr":"sofish.lin","github":"sofish","douban":"sofish","gravatar_id":"e8fb37bb5570f1f8a349a5d248ede347","location":"杭州"},
@@ -37,5 +37,7 @@
 {"id":"feelinglucky","mail":"i.feelinglucky[AT]gmail.com","twitter":"feelinglucky","blog":"http://www.gracecode.com/","github":"feelinglucky","google_code":"gracecode","google_profile":"i.feelinglucky","gravatar_id":"81c2122ab3bb2822cfc9169866881fe1"},
 {"id":"infinte","mail":"infinte.cdda[AT]hotmail.com","blog":["http://typeof.net/","http://coro.in/"],"twitter":"belleveinvis","github":"infinte","gravatar_id":"2833e560cdc5b886106a813454dcc20f","location":"HeFei,China"},
 {"id":"janlay","mail":"janlay[AT]gmail.com","twitter":"janlay","blog":"http://janlay.com/","google_profile":"janlay","gravatar_id":"a54967e183ff3a7326bfea2daa9416e7"},
-{"id":"habamax","mail":"habamax[AT]gmail.com","blog":"http://habamax.ru/blog/","google_code":"vimwiki","gravatar_id":"d870fe710d301adff10c9042f43e0373","memo":"Vimwiki Author"}
+{"id":"habamax","mail":"habamax[AT]gmail.com","blog":"http://habamax.ru/blog/","google_code":"vimwiki","gravatar_id":"d870fe710d301adff10c9042f43e0373","memo":"Vimwiki Author"},
+{"id":"NIX","mail":"zhuhongxu[AT]gmail.com","blog":"http://hi.baidu.com/zhuhongxu","twitter":"nixzhu","gravatar_id":"06a8451b432b7a837e3db1ae46b85ae3"},
+{"id":"yyfrankyy","mail":"yyfrankyy[AT]gmail.com","blog":"http://f2e.us/","twitter":"yyfrankyy","gravatar_id":"b5d5073a3994537019cf4c3889fbf3df"}
 ]

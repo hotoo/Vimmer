@@ -8,10 +8,10 @@ section{margin-bottom:300px; display:block;}
     font-size:2em; padding:3px 5px; border:1px solid #ccc; margin:8px auto;
     -moz-border-radius:4px; -khtml-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;
 }
-ul{list-style-type:none; margin:0; padding:0;}
-ul:after{content:"\0020"; display:block; height:0; clear:both;}
-ul{zoom:1;}
-li{
+#vimmer-list ul{list-style-type:none; margin:0; padding:0;}
+#vimmer-list ul:after{content:"\0020"; display:block; height:0; clear:both;}
+#vimmer-list ul{zoom:1;}
+#vimmer-list li{
     list-style-type:none;
     margin:8px;
     padding:5px;
@@ -25,21 +25,21 @@ li{
     position:relative;
     /*-moz-opacity:.5; opacity:.5;*/
 }
-li:hover{
+#vimmer-list li:hover{
     border-color:#666;
     background:#333 none;
     color:#fff;
 }
-li div.gravatar{background:transparent none; padding:2px;}
-li:hover div.gravatar{background:#fff none;}
-li i{
+#vimmer-list li div.gravatar{background:transparent none; padding:2px;}
+#vimmer-list li:hover div.gravatar{background:#fff none;}
+#vimmer-list li i{
     position:absolute;
     right:10px; top:5px; color:#eee;
     font-size:2em;
 }
-li:hover i{color:#ccc;}
-a{color:#333;}
-li:hover a{color:#fff;}
+#vimmer-list li:hover i{color:#ccc;}
+#vimmer-list a{color:#333;}
+#vimmer-list li:hover a{color:#fff;}
 
 #hover-pane{
     position:absolute; top:0; left:0; display:none;
@@ -76,3 +76,43 @@ div.delicious a{background-image:url(icons/delicious.png);}
 div.douban a{background-image:url(icons/douban.png);}
 div.qq{background:transparent url(icons/qq.png) no-repeat 0 center; padding-left:20px!important;}
 div.memo{margin-top:10px;border-top:1px solid #666; padding-top:10px; line-height:1.5em; font-size:.85em; color:#999;}
+
+ul.switch-bar{margin:0; padding:0; list-style-type:none;}
+ul.switch-bar:after{content:"\0020"; display:block; height:0; clear:both;}
+ul.switch-bar{zoom:1;}
+    ul.switch-bar li{margin:0; paddding:0; list-style-type:none; float:left;}
+        ul.switch-bar li label,
+        ul.switch-bar li a{padding:2px 8px; line-height:1.2em;}
+        ul.switch-bar li label{color:#999; border:1px solid #fff; display:inline-block;}
+        ul.switch-bar li a{text-decoration:none; color:#333;
+            border-width:1px 0; border-style:solid; border-color:#ccc;
+            display:block;
+        }
+        ul.switch-bar li a:hover{background:#eee none; color:#333;}
+        ul.switch-bar li.active a{background:#666 none; color:#fff; border-color:#666; font-weight:bold;}
+        ul.switch-bar li.first a{
+            border-left-width:1px;
+            -moz-border-radius:3px 0 0 3px;
+            -khtml-border-radius:3px 0 0 3px;
+            -webkit-border-top-left-radius:3px; -webkit-border-top-right-radius:0;
+            -webkit-border-bottom-right-radius:0; -webkit-border-bottom-left-radius:3px;
+             border-radius:3px 0 0 3px;
+        }
+        ul.switch-bar li.last a{
+            border-right-width:1px;
+            -moz-border-radius:0 3px 3px 0;
+            -khtml-border-radius:0 3px 3px 0;
+            -webkit-border-top-left-radius:0; -webkit-border-top-right-radius:3px;
+            -webkit-border-bottom-right-radius:3px; -webkit-border-bottom-left-radius:0;
+             border-radius:0 3px 3px 0;
+        }
+
+ul.switch-bar.blue-sky li label{color:#8ec2f5;}
+ul.switch-bar.blue-sky li a{color:#8ec2f5; border-color:#8ec2f5;}
+ul.switch-bar.blue-sky li a:hover{background-color:#d6e9fc; color:#49e;}
+ul.switch-bar.blue-sky li.active a{background-color:#8ec2f5; color:#fff;}
+
+ul.switch-bar.gold li label{color:#fe9d01;}
+ul.switch-bar.gold li a{color:#fe9d01; border-color:#fe9d01;}
+ul.switch-bar.gold li a:hover{background-color:#fff7d2; color:#fe9d01;}
+ul.switch-bar.gold li.active a{background-color:#fe9d01; color:#fff;}

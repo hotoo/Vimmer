@@ -34,7 +34,7 @@
                     return Math.random()>=0.5?1:-1;
                 });
                 for(var i=0,l=data.length,e=data[i]; i<l; i++,e=data[i]){
-                    s[s.length] = ['<li>'];
+                    s[s.length] = ['<li tabindex='+(i+1)+'>'];
                     s[s.length] = '<div class="gravatar"><img src="http://www.gravatar.com/avatar/'+(e.gravatar_id||"")+'?s=80" width="80" height="80" /></div>';
                     s[s.length] = '<div>'+(e.name||e.nickname||e.id)+'('+e.id+')'+'</div>';
                     if(e.mail){
@@ -61,7 +61,7 @@
                         s[s.length] = '<div class="github"><a href="http://github.com/'+e.github+'"><cite>'+e.github+'</cite>@github</a></div>';
                     }
                     if(e.google_code){
-                        s[s.length] = '<div class="google_code"><a href="http://code.google.com/p/'+e.google_code+'"><cite>'+e.google_code+'</cite>@google.code</a></div>';
+                        s[s.length] = '<div class="google_code"><a href="http://code.google.com/p/'+e.google_code+'/"><cite>'+e.google_code+'</cite>@google.code</a></div>';
                     }
                     if(e.google_profile){
                         s[s.length] = '<div class="google_profile"><a href="http://www.google.com/profiles/'+e.google_profile+'/"><cite>'+e.google_profile+'</cite>@google.profile</a></div>';
@@ -89,18 +89,19 @@
 
                 var pane = $('<div id="hover-pane"></div>').appendTo(document.body);
                 //var target = null;
-                $("#vimmer-list>ul>li").mouseover(function(){
+                $("#vimmer-list>ul>li").mouseover(popout);
+                $("#vimmer-list>ul>li").focus(popout);
+                function popout(){
                     var offset=$(this).offset();
                     pane.html($(this).html()).css({left:offset.left,top:offset.top}).show();
-                    //$(this).css({"visibility":"hidden"});
-                    //target = $(this);
-                });
-                pane.mouseleave(function(){
-                    //if(target){
-                    //    target.css({"visibility":"visible"});
-                    //}
+                    //$("#vimmer-list>ul>li").css({"opacity":"0.5"});
+                }
+                pane.mouseleave(popin);
+                pane.blur(popin);
+                function popin(){
+                    //$("#vimmer-list>ul>li").css({"opacity":"1"});
                     pane.hide();
-                });
+                }
             });
 
         });

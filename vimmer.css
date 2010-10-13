@@ -23,6 +23,7 @@ li{
     overflow:hidden;
     -moz-border-radius:4px; -khtml-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;
     position:relative;
+    /*-moz-opacity:.5; opacity:.5;*/
 }
 li:hover{
     border-color:#666;

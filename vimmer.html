@@ -55,6 +55,7 @@
                 data = data.sort(function(){
                     return Math.random()>=0.5?1:-1;
                 });
+
                 for(var i=0,l=data.length,e=data[i]; i<l; i++,e=data[i]){
                     s[s.length] = '<li tabindex='+(i+1)+'>';
                     if(e.gravatar_id){

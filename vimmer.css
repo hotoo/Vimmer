@@ -58,7 +58,7 @@ section{margin-bottom:300px; display:block;}
     z-index:100;
     -moz-opacity:.85; opacity:.85;/* -ms-filter:"alpha(opacity=85)"; filter:alpha(opacity=85); zoom:1;*/
 }
-#hover-pane div{padding:3px 0; white-space:nowrap;}
+#hover-pane div{padding:3px 0; white-space:nowrap;/* font-weight:bold;*/}
 #hover-pane div.gravatar{background:#fff none; padding:2px;}
 #hover-pane a{color:#fff;}
 #hover-pane i{position:absolute; top:5px; right:10px; color:#ccc; font-size:2em;}

@@ -120,7 +120,32 @@
                     s[s.length] = ['</li>'];
                 }
                 s = s.concat('</ul>');
-                $("#vimmer-list").html(s.join(""));
+		var $itemlist = $(s.join(""));
+                $("#vimmer-list").append($itemlist);
+		setTimeout(function(){
+		    $itemlist.find("li").each(function(i){
+			var $blogs = $(this).find(".blog");
+			if(!$blogs) return;
+			var e = data[i];
+			$.each($blogs, function(i){
+			    var $blog = $(this);
+			    var img = new Image();
+			    img.onload = function(){
+				img.height = 16;
+				img.width = 16;
+				$blog.prepend($(img));
+				$blog.find("a").css("padding-left", "4px");
+			    };
+			    if(typeof e.favicon=="string" || e.favicon instanceof String){
+				img.src = e.favicon;
+			    }else if(e.favicon instanceof Array && e.favicon.length){
+				img.src = e.favicon[i] ? e.favicon[i] : e.favicon[0];
+			    }else{
+				img.src = $blog.find("a")[0].href + 'favicon.ico';
+			    }
+			});
+		    });
+		}, 100);
 
                 var pane = $('<div id="hover-pane"></div>').appendTo(document.body);
                 //var target = null;

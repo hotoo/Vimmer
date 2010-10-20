@@ -59,10 +59,13 @@
                 for(var i=0,l=data.length,e=data[i]; i<l; i++,e=data[i]){
                     s[s.length] = '<li tabindex='+(i+1)+'>';
                     if(e.gravatar_id){
-                        s[s.length] = '<div class="gravatar"><img src="http://www.gravatar.com/avatar/'+(e.gravatar_id||"")+'?s=80" width="80" height="80" /></div>';
+                        s[s.length] = '<div class="gravatar"><img src="http://www.gravatar.com/avatar/'+(e.gravatar_id)+'?s=80" width="80" height="80" /></div>';
                     }else if(e.gravatar_id){
+			//FIXME 这个没有缓存
                         s[s.length] = '<div class="gravatar"><img src="https://api.twitter.com/1/users/profile_image/twitter.json?size=bigger&screen_name='+e.twitter+'" width="80" height="80" /></div>';
-                    }
+		    }else{
+                        s[s.length] = '<div class="gravatar"><img src="http://www.gravatar.com/avatar/?s=80" width="80" height="80" /></div>';
+		    }
                     s[s.length] = '<div>'+(e.name||e.nickname||e.id)+'('+e.id+')'+'</div>';
                     if(e.mail){
                         if(typeof e.mail=="string" || e.mail instanceof String){

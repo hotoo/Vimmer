@@ -39,6 +39,7 @@
     <script type="text/javascript">/*<![CDATA[*/
         $(function(){
             var RE=/^https?:\/\/(?:www\.)?(.*?)\/?$/i;
+            var RE_Gmail=/\[AT\]gmail\.com$/;
             function mk(link,id,name){
                 if(link){
                     if(typeof link=="string" || link instanceof String){
@@ -58,14 +59,18 @@
 
                 for(var i=0,l=data.length,e=data[i]; i<l; i++,e=data[i]){
                     s[s.length] = '<li tabindex='+(i+1)+'>';
-                    if(e.gravatar_id){
+                    if(typeof e.mail=="string" && RE_Gmail.test(e.mail)){
+                        s[s.length] = '<div class="gravatar"><img src="https://mail.google.com/mail/photos/'+(e.mail.replace("[AT]","%40"))+'" width="80" height="80" /></div>';
+                    }else if(e.mail instanceof Array && RE_Gmail.test(e.mail[0])){
+                        s[s.length] = '<div class="gravatar"><img src="https://mail.google.com/mail/photos/'+(e.mail[0].replace("[AT]","%40"))+'" width="80" height="80" /></div>';
+                    }else if(e.gravatar_id){
                         s[s.length] = '<div class="gravatar"><img src="http://www.gravatar.com/avatar/'+e.gravatar_id+'?s=80&d=http://hotoo.github.com/Vimmer/avatar/unknow.jpg" width="80" height="80" /></div>';
                     }else if(e.gravatar_id){
-			//FIXME 这个没有缓存
+                    //FIXME 这个没有缓存
                         s[s.length] = '<div class="gravatar"><img src="https://api.twitter.com/1/users/profile_image/twitter.json?size=bigger&screen_name='+e.twitter+'" width="80" height="80" /></div>';
-		    }else{
+                    }else{
                         s[s.length] = '<div class="gravatar"><img src="http://www.gravatar.com/avatar/?s=80" width="80" height="80" /></div>';
-		    }
+                    }
                     s[s.length] = '<div>'+(e.name||e.nickname||e.id)+'('+e.id+')'+'</div>';
                     if(e.mail){
                         if(typeof e.mail=="string" || e.mail instanceof String){
@@ -82,10 +87,10 @@
                     }
                     if(e.blog){
                         if(typeof e.blog=="string" || e.blog instanceof String){
-                            s[s.length] = '<div class="blog"><a href="'+e.blog+'"><cite>'+e.blog.replace(/^https?:\/\/(?:www\.)?(.*?)\/?$/i,"$1")+'</cite></a></div>';
+                            s[s.length] = '<div class="blog"><a href="'+e.blog+'" style="background-image:url(http://www.google.com/profiles/c/favicons?domain_url='+e.blog+');"><cite>'+e.blog.replace(/^https?:\/\/(?:www\.)?(.*?)\/?$/i,"$1")+'</cite></a></div>';
                         }else if(e.blog instanceof Array){
                             for(var j=0,k=e.blog.length; j<k; j++){
-                                s[s.length] = '<div class="blog"><a href="'+e.blog[j]+'"><cite>'+e.blog[j].replace(/^https?:\/\/(?:www\.)?(.*?)\/?$/i,"$1")+'</cite></a></div>';
+                                s[s.length] = '<div class="blog"><a href="'+e.blog[j]+'" style="background-image:url(http://www.google.com/profiles/c/favicons?domain_url='+e.blog+');"><cite>'+e.blog[j].replace(/^https?:\/\/(?:www\.)?(.*?)\/?$/i,"$1")+'</cite></a></div>';
                             }
                         }
                     }
@@ -123,31 +128,31 @@
                     s[s.length] = ['</li>'];
                 }
                 s = s.concat('</ul>');
-		var $itemlist = $(s.join(""));
+                var $itemlist = $(s.join(""));
                 $("#vimmer-list").html($itemlist);
 		//添加博客图标
-		$itemlist.find("li").each(function(i){
-		    var $blogs = $(this).find(".blog");
-		    if(!$blogs) return;
-		    var e = data[i];
-		    $.each($blogs, function(i){
-			var $blog = $(this);
-			var img = new Image();
-			img.onload = function(){
-			    img.height = 16;
-			    img.width = 16;
-			    $blog.prepend($(img));
-			    $blog.find("a").css("padding-left", "4px");
-			};
-			if(typeof e.favicon=="string" || e.favicon instanceof String){
-			    img.src = e.favicon;
-			}else if(e.favicon instanceof Array && e.favicon.length){
-			    img.src = e.favicon[i] ? e.favicon[i] : e.favicon[0];
-			}else{
-			    img.src = $blog.find("a")[0].href + 'favicon.ico';
-			}
-		    });
-		});
+	//	$itemlist.find("li").each(function(i){
+	//	    var $blogs = $(this).find(".blog");
+	//	    if(!$blogs) return;
+	//	    var e = data[i];
+	//	    $.each($blogs, function(i){
+	//		var $blog = $(this);
+	//		var img = new Image();
+	//		img.onload = function(){
+	//		    img.height = 16;
+	//		    img.width = 16;
+	//		    $blog.prepend($(img));
+	//		    $blog.find("a").css("padding-left", "4px");
+	//		};
+	//		if(typeof e.favicon=="string" || e.favicon instanceof String){
+	//		    img.src = e.favicon;
+	//		}else if(e.favicon instanceof Array && e.favicon.length){
+	//		    img.src = e.favicon[i] ? e.favicon[i] : e.favicon[0];
+	//		}else{
+	//		    img.src = $blog.find("a")[0].href + 'favicon.ico';
+	//		}
+	//	    });
+	//	});
 
                 var pane = $('<div id="hover-pane"></div>').appendTo(document.body);
                 //var target = null;

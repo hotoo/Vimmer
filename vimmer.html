@@ -66,7 +66,7 @@
 		    }else{
                         s[s.length] = '<div class="gravatar"><img src="http://www.gravatar.com/avatar/?s=80" width="80" height="80" /></div>';
 		    }
-                    s[s.length] = '<div>'+(e.name||e.nickname||e.id)+'('+e.id+')'+'</div>';
+                    s[s.length] = '<div class="name">'+(e.name||e.nickname||e.id)+'('+e.id+')'+'</div>';
                     if(e.mail){
                         if(typeof e.mail=="string" || e.mail instanceof String){
                             e.mail = e.mail.replace("[AT]","@");

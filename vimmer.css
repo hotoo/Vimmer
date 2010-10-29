@@ -67,6 +67,7 @@ div a{padding-left:20px; background:transparent none no-repeat 0 center; text-de
 div a cite{color:#999!important; font-style:normal;}
 div a:hover{color:#fff!important;/* text-decoration:underline;*/}
 div a:hover cite{color:#f60!important;}
+div.name{white-space:nowrap;}
 div.mail a{background-image:url(icons/gmail.gif);}
 div.twitter a{background-image:url(icons/twitter.png);}
 div.yahoo_meme a{background-image:url(icons/yahoo-meme.gif);}

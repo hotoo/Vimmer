@@ -23,8 +23,8 @@
         <div>
             <ul style="position: absolute; right: 5px; top:5px;" class="switch-bar">
                 <li class="label"><label>Sort:</label></li>
-                <li class="first active"><a href="javascript:void(0);">Random</a></li>
-                <li class="last"><a href="javascript:void(0);">Alphabetical</a></li>
+                <li id="sort-random" class="first active"><a href="javascript:void(0);">Random</a></li>
+                <li id="sort-alpha" class="last"><a href="javascript:void(0);">Alphabetical</a></li>
             </ul>
         </div>
     </header>
@@ -37,141 +37,189 @@
 </div>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script type="text/javascript">/*<![CDATA[*/
+        var MEMBERs, PANE;
         $(function(){
-            var RE=/^https?:\/\/(?:www\.)?(.*?)\/?$/i;
-            var RE_Gmail=/\[AT\]gmail\.com$/;
-            function mk(link,id,name){
-                if(link){
-                    if(typeof link=="string" || link instanceof String){
-                        s[s.length] = '<div class="'+name+'"><a href="'+link+'"><cite>'+link.replace(RE,"$1")+'</cite></a></div>';
-                    }else if(link instanceof Array){
-                        for(var i=0,l=link.length; i<l; i++){
-                            s[s.length] = '<div class="blog"><a href="'+link[i]+'"><cite>'+link[i].replace(RE,"$1")+'</cite></a></div>';
-                        }
+            $.getJSON("vimmer.json", function(data){
+                MEMBERs = data;
+                randomMember();
+            });
+            $("#key").keyup(function(){
+                filterMember(this.value);
+            });
+            $("#sort-random").click(function(){
+                if($(this).hasClass("active")){return;}
+                randomMember();
+                $(this).addClass("active");
+                $("#sort-alpha").removeClass("active");
+            });
+            $("#sort-alpha").click(function(){
+                if($(this).hasClass("active")){return;}
+                alphaMember();
+                $($(this).addClass("active"))
+                $("#sort-random").removeClass("active");
+            });
+            PANE = $('<div id="hover-pane"></div>').appendTo(document.body);
+
+            $("#vimmer-list>ul>li").live("mouseover",popout);
+            $("#vimmer-list>ul>li").live("focus",popout);
+            PANE.mouseleave(popin);
+            PANE.blur(popin);
+        });
+
+        function filterMember(key){
+            if(!key){
+                updateMember(MEMBERs);
+                return;
+            }
+            var m=[];
+            key = key.toLowerCase();
+            for(var i=0,l=MEMBERs.length; i<l; i++){
+                if((MEMBERs[i].id && MEMBERs[i].id.toLowerCase().indexOf(key)>=0) ||
+                    (MEMBERs[i].nickname && MEMBERs[i].nickname.toLowerCase().indexOf(key)>=0) ||
+                    (MEMBERs[i].name && MEMBERs[i].name.toLowerCase().indexOf(key)>=0)||
+                    (MEMBERs[i].mail && typeof MEMBERs[i].mail=="string" && MEMBERs[i].mail.toLowerCase().indexOf(key)>=0)
+                    ){
+                    m[m.length] = MEMBERs[i];
+                }
+            }
+            updateMember(m);
+        }
+        function randomMember(){
+            updateMember(MEMBERs.sort(function(){
+                return Math.random()>=0.5?1:-1;
+            }));
+        }
+        function alphaMember(){
+            updateMember(MEMBERs.sort(function($1,$2){
+                return $1.id.localeCompare($2.id);
+            }));
+        }
+
+        var RE=/^https?:\/\/(?:www\.)?(.*?)\/?$/i;
+        var RE_Gmail=/\[AT\]gmail\.com$/;
+        function mk(link,id,name){
+            if(link){
+                if(typeof link=="string" || link instanceof String){
+                    s[s.length] = '<div class="'+name+'"><a href="'+link+'"><cite>'+link.replace(RE,"$1")+'</cite></a></div>';
+                }else if(link instanceof Array){
+                    for(var i=0,l=link.length; i<l; i++){
+                        s[s.length] = '<div class="blog"><a href="'+link[i]+'"><cite>'+link[i].replace(RE,"$1")+'</cite></a></div>';
                     }
                 }
             }
-            $.getJSON("vimmer.json", function(data){
-                var s=['<ul>'];
-                data = data.sort(function(){
-                    return Math.random()>=0.5?1:-1;
-                });
-
-                for(var i=0,l=data.length,e=data[i]; i<l; i++,e=data[i]){
-                    s[s.length] = '<li tabindex='+(i+1)+'>';
-                    if(typeof e.mail=="string" && RE_Gmail.test(e.mail)){
-                        s[s.length] = '<div class="gravatar"><img src="https://mail.google.com/mail/photos/'+(e.mail.replace("[AT]","%40"))+'" width="80" height="80" /></div>';
-                    }else if(e.mail instanceof Array && RE_Gmail.test(e.mail[0])){
-                        s[s.length] = '<div class="gravatar"><img src="https://mail.google.com/mail/photos/'+(e.mail[0].replace("[AT]","%40"))+'" width="80" height="80" /></div>';
-                    }else if(e.gravatar_id){
-                        s[s.length] = '<div class="gravatar"><img src="http://www.gravatar.com/avatar/'+e.gravatar_id+'?s=80&d=http://hotoo.github.com/Vimmer/avatar/unknow.jpg" width="80" height="80" /></div>';
-                    }else if(e.gravatar_id){
-                    //FIXME 这个没有缓存
-                        s[s.length] = '<div class="gravatar"><img src="https://api.twitter.com/1/users/profile_image/twitter.json?size=bigger&screen_name='+e.twitter+'" width="80" height="80" /></div>';
-                    }else{
-                        s[s.length] = '<div class="gravatar"><img src="http://www.gravatar.com/avatar/?s=80" width="80" height="80" /></div>';
-                    }
-                    s[s.length] = '<div>'+(e.name||e.nickname||e.id)+'('+e.id+')'+'</div>';
-                    if(e.mail){
-                        if(typeof e.mail=="string" || e.mail instanceof String){
-                            e.mail = e.mail.replace("[AT]","@");
-                            var m=e.mail.split("@");
-                            s[s.length] = '<div class="mail"><a href="mailto:'+e.mail+'"><cite>'+m[0]+'</cite>@'+m[1]+'</a></div>';
-                        }else if(e.mail instanceof Array){
-                            for(var j=0,k=e.mail.length; j<k; j++){
-                                e.mail[j] = e.mail[j].replace("[AT]","@");
-                                var m=e.mail[j].split("@");
-                                s[s.length] = '<div class="mail"><a href="mailto:'+e.mail[j]+'"><cite>'+m[0]+'</cite>@'+m[1]+'</a></div>';
-                            }
+        }
+        function updateMember(data){
+            var s=['<ul>'];
+            for(var i=0,avatar,l=data.length,e=data[i]; i<l; i++,e=data[i]){
+                s[s.length] = '<li tabindex='+(i+1)+'>';
+                if(e.gravatar_id){
+                    avatar = 'http://www.gravatar.com/avatar/'+e.gravatar_id+'?s=80&d=http://hotoo.github.com/Vimmer/avatar/unknow.jpg';
+                }else if(typeof e.mail=="string" && RE_Gmail.test(e.mail)){
+                    avatar = 'https://mail.google.com/mail/photos/'+(e.mail.replace("[AT]","%40"));
+                }else if(e.mail instanceof Array && RE_Gmail.test(e.mail[0])){
+                    avatar = 'https://mail.google.com/mail/photos/'+e.mail[0].replace("[AT]","%40");
+                }else if(e.twitter){
+                    avatar = 'https://api.twitter.com/1/users/profile_image/twitter.json?size=bigger&screen_name='+e.twitter;
+                }else{
+                    avatar = 'http://hotoo.github.com/Vimmer/avatar/unknow.jpg';
+                }
+                s[s.length] = '<div class="gravatar"><img src="'+avatar+'" width="80" height="80" /></div>';
+                s[s.length] = '<div class="name">'+(e.name||e.nickname||e.id)+'('+e.id+')'+'</div>';
+                if(e.mail){
+                    if(typeof e.mail=="string" || e.mail instanceof String){
+                        e.mail = e.mail.replace("[AT]","@");
+                        var m=e.mail.split("@");
+                        s[s.length] = '<div class="mail"><a href="mailto:'+e.mail+'"><cite>'+m[0]+'</cite>@'+m[1]+'</a></div>';
+                    }else if(e.mail instanceof Array){
+                        for(var j=0,k=e.mail.length; j<k; j++){
+                            e.mail[j] = e.mail[j].replace("[AT]","@");
+                            var m=e.mail[j].split("@");
+                            s[s.length] = '<div class="mail"><a href="mailto:'+e.mail[j]+'"><cite>'+m[0]+'</cite>@'+m[1]+'</a></div>';
                         }
                     }
-                    if(e.blog){
-                        if(typeof e.blog=="string" || e.blog instanceof String){
-                            s[s.length] = '<div class="blog"><a href="'+e.blog+'" style="background-image:url(http://www.google.com/profiles/c/favicons?domain_url='+e.blog+');"><cite>'+e.blog.replace(/^https?:\/\/(?:www\.)?(.*?)\/?$/i,"$1")+'</cite></a></div>';
-                        }else if(e.blog instanceof Array){
-                            for(var j=0,k=e.blog.length; j<k; j++){
-                                s[s.length] = '<div class="blog"><a href="'+e.blog[j]+'" style="background-image:url(http://www.google.com/profiles/c/favicons?domain_url='+e.blog+');"><cite>'+e.blog[j].replace(/^https?:\/\/(?:www\.)?(.*?)\/?$/i,"$1")+'</cite></a></div>';
-                            }
+                }
+                if(e.blog){
+                    if(typeof e.blog=="string" || e.blog instanceof String){
+                        s[s.length] = '<div class="blog"><a href="'+e.blog+'" style="background-image:url(http://www.google.com/profiles/c/favicons?domain_url='+e.blog+');"><cite>'+e.blog.replace(/^https?:\/\/(?:www\.)?(.*?)\/?$/i,"$1")+'</cite></a></div>';
+                    }else if(e.blog instanceof Array){
+                        for(var j=0,k=e.blog.length; j<k; j++){
+                            s[s.length] = '<div class="blog"><a href="'+e.blog[j]+'" style="background-image:url(http://www.google.com/profiles/c/favicons?domain_url='+e.blog+');"><cite>'+e.blog[j].replace(/^https?:\/\/(?:www\.)?(.*?)\/?$/i,"$1")+'</cite></a></div>';
                         }
                     }
-                    if(e.twitter){
-                        s[s.length] = '<div class="twitter"><a href="https://twitter.com/'+e.twitter+'">@<cite>'+e.twitter+'</cite></a></div>';
-                    }
-                    if(e.yahoo_meme){
-                        s[s.length] = '<div class="yahoo_meme"><a href="http://meme.yahoo.com/'+e.yahoo_meme+'/"><cite>'+e.yahoo_meme+'</cite>@yahoo.meme</a></div>';
-                    }
-                    if(e.github){
-                        s[s.length] = '<div class="github"><a href="http://github.com/'+e.github+'"><cite>'+e.github+'</cite>@github</a></div>';
-                    }
-                    if(e.google_code){
-                        s[s.length] = '<div class="google_code"><a href="http://code.google.com/p/'+e.google_code+'/"><cite>'+e.google_code+'</cite>@google.code</a></div>';
-                    }
-                    if(e.google_profile){
-                        s[s.length] = '<div class="google_profile"><a href="http://www.google.com/profiles/'+e.google_profile+'/"><cite>'+e.google_profile+'</cite>@google.profile</a></div>';
-                    }
-                    if(e.flickr){
-                        s[s.length] = '<div class="flickr"><a href="http://www.flickr.com/photos/'+e.flickr+'/"><cite>'+e.flickr+'</cite>@flickr</a></div>';
-                    }
-                    if(e.delicious){
-                        s[s.length] = '<div class="delicious"><a href="http://www.delicious.com/'+e.delicious+'"><cite>'+e.delicious+'</cite>@delicious</a></div>';
-                    }
-                    if(e.douban){
-                        s[s.length] = '<div class="douban"><a href="http://www.douban.com/people/'+e.douban+'/"><cite>'+e.douban+'</cite>@douban</a></div>';
-                    }
-                    if(e.qq){
-                        s[s.length] = '<div class="qq">'+e.qq+'</div>';
-                    }
-                    if(e.memo){
-                        s[s.length] = '<div class="memo">'+e.memo+'</div>';
-                    }
-                    s[s.length] = '<i>'+(i+1)+'</i>';
-                    s[s.length] = ['</li>'];
                 }
-                s = s.concat('</ul>');
-                var $itemlist = $(s.join(""));
-                $("#vimmer-list").html($itemlist);
-		//添加博客图标
-	//	$itemlist.find("li").each(function(i){
-	//	    var $blogs = $(this).find(".blog");
-	//	    if(!$blogs) return;
-	//	    var e = data[i];
-	//	    $.each($blogs, function(i){
-	//		var $blog = $(this);
-	//		var img = new Image();
-	//		img.onload = function(){
-	//		    img.height = 16;
-	//		    img.width = 16;
-	//		    $blog.prepend($(img));
-	//		    $blog.find("a").css("padding-left", "4px");
-	//		};
-	//		if(typeof e.favicon=="string" || e.favicon instanceof String){
-	//		    img.src = e.favicon;
-	//		}else if(e.favicon instanceof Array && e.favicon.length){
-	//		    img.src = e.favicon[i] ? e.favicon[i] : e.favicon[0];
-	//		}else{
-	//		    img.src = $blog.find("a")[0].href + 'favicon.ico';
-	//		}
-	//	    });
-	//	});
+                if(e.twitter){
+                    s[s.length] = '<div class="twitter"><a href="https://twitter.com/'+e.twitter+'">@<cite>'+e.twitter+'</cite></a></div>';
+                }
+                if(e.yahoo_meme){
+                    s[s.length] = '<div class="yahoo_meme"><a href="http://meme.yahoo.com/'+e.yahoo_meme+'/"><cite>'+e.yahoo_meme+'</cite>@yahoo.meme</a></div>';
+                }
+                if(e.github){
+                    s[s.length] = '<div class="github"><a href="http://github.com/'+e.github+'"><cite>'+e.github+'</cite>@github</a></div>';
+                }
+                if(e.google_code){
+                    s[s.length] = '<div class="google_code"><a href="http://code.google.com/p/'+e.google_code+'/"><cite>'+e.google_code+'</cite>@google.code</a></div>';
+                }
+                if(e.google_profile){
+                    s[s.length] = '<div class="google_profile"><a href="http://www.google.com/profiles/'+e.google_profile+'/"><cite>'+e.google_profile+'</cite>@google.profile</a></div>';
+                }
+                if(e.flickr){
+                    s[s.length] = '<div class="flickr"><a href="http://www.flickr.com/photos/'+e.flickr+'/"><cite>'+e.flickr+'</cite>@flickr</a></div>';
+                }
+                if(e.delicious){
+                    s[s.length] = '<div class="delicious"><a href="http://www.delicious.com/'+e.delicious+'"><cite>'+e.delicious+'</cite>@delicious</a></div>';
+                }
+                if(e.douban){
+                    s[s.length] = '<div class="douban"><a href="http://www.douban.com/people/'+e.douban+'/"><cite>'+e.douban+'</cite>@douban</a></div>';
+                }
+                if(e.qq){
+                    s[s.length] = '<div class="qq">'+e.qq+'</div>';
+                }
+                if(e.vim_org && e.vim_org[1]){
+          s[s.length] = '<div class="vim_org"><a href="http://www.vim.org/account/profile.php?user_id='+e.vim_org[0]+'"><cite>'+e.vim_org[1]+'</cite>@vim.org</a></div>';
+                }
+                if(e.memo){
+                    s[s.length] = '<div class="memo">'+e.memo+'</div>';
+                }
+                s[s.length] = '<i>'+(i+1)+'</i>';
+                s[s.length] = ['</li>'];
+            }
+            s = s.concat('</ul>');
+            var $itemlist = $(s.join(""));
+            $("#vimmer-list").html($itemlist);
+    //添加博客图标
+//	$itemlist.find("li").each(function(i){
+//	    var $blogs = $(this).find(".blog");
+//	    if(!$blogs) return;
+//	    var e = data[i];
+//	    $.each($blogs, function(i){
+//		var $blog = $(this);
+//		var img = new Image();
+//		img.onload = function(){
+//		    img.height = 16;
+//		    img.width = 16;
+//		    $blog.prepend($(img));
+//		    $blog.find("a").css("padding-left", "4px");
+//		};
+//		if(typeof e.favicon=="string" || e.favicon instanceof String){
+//		    img.src = e.favicon;
+//		}else if(e.favicon instanceof Array && e.favicon.length){
+//		    img.src = e.favicon[i] ? e.favicon[i] : e.favicon[0];
+//		}else{
+//		    img.src = $blog.find("a")[0].href + 'favicon.ico';
+//		}
+//	    });
+//	});
 
-                var pane = $('<div id="hover-pane"></div>').appendTo(document.body);
-                //var target = null;
-                $("#vimmer-list>ul>li").mouseover(popout);
-                $("#vimmer-list>ul>li").focus(popout);
-                function popout(){
-                    var offset=$(this).offset();
-                    pane.html($(this).html()).css({left:offset.left,top:offset.top}).show();
-                    //$("#vimmer-list>ul>li").css({"opacity":"0.5"});
-                }
-                pane.mouseleave(popin);
-                pane.blur(popin);
-                function popin(){
-                    //$("#vimmer-list>ul>li").css({"opacity":"1"});
-                    pane.hide();
-                }
-            });
-
-        });
+        }
+        function popout(){
+            var offset=$(this).offset();
+            PANE.html($(this).html()).css({left:offset.left,top:offset.top}).show();
+            //$("#vimmer-list>ul>li").css({"opacity":"0.5"});
+        }
+        function popin(){
+            //$("#vimmer-list>ul>li").css({"opacity":"1"});
+            PANE.hide();
+        }
     /*]]>*/</script>
 </body>
 </html>
